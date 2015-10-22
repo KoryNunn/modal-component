@@ -1,7 +1,7 @@
 {
   "name": "modal-component",
   "version": "1.0.0",
-  "description": "",
+  "description": "A simple modal component",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -19,5 +19,16 @@
   "devDependencies": {
     "browserify": "^11.2.0",
     "uglifyify": "^3.0.1"
-  }
+  },
+  "directories": {
+    "example": "example"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KoryNunn/modal-component.git"
+  },
+  "bugs": {
+    "url": "https://github.com/KoryNunn/modal-component/issues"
+  },
+  "homepage": "https://github.com/KoryNunn/modal-component#readme"
 }
