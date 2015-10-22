@@ -20,31 +20,16 @@ module.exports = function(fastn, component, type, settings, children){
 
         component.emit('render');
 
-        var nextState;
         var handler = function(event){
-            var shown = !!component.show();
-
-            if(event.eventPhase === 1){
-                nextState = shown;
-                return;
-            }
-
-            if(nextState != null && nextState !== shown){
-                nextState = null;
-                return;
-            }
-
-            if(shown && !doc(event.target).closest(component.contentElement)){
+            if(component.show() && !doc(event.target).closest(component.contentElement)){
                 component.show(false);
             }
         };
 
         document.addEventListener('click', handler, true);
-        document.addEventListener('click', handler);
 
         component.on('destroy', function(){
             document.removeEventListener('click', handler, true);
-            document.removeEventListener('click', handler);
             updateShow(false);
         });
 
