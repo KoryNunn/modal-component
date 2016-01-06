@@ -21,7 +21,11 @@ module.exports = function(fastn, component, type, settings, children){
         component.emit('render');
 
         var handler = function(event){
-            if(component.show() && !doc(event.target).closest(component.contentElement)){
+            if(
+                component.show() &&
+                component.closable() &&
+                !doc(event.target).closest(component.contentElement)
+            ){
                 component.show(false);
             }
         };
@@ -114,6 +118,8 @@ module.exports = function(fastn, component, type, settings, children){
     }
 
     component.setProperty('show');
+    component.setProperty('closable');
+    component.closable(true);
     component.show.updater(updateShow);
 
     return component;
