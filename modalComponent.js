@@ -23,7 +23,7 @@ module.exports = function(fastn, component, type, settings, children){
         var handler = function(event){
             if(
                 component.show() &&
-                component.closable() &&
+                component._isClosable() &&
                 !doc(event.target).closest(component.contentElement)
             ){
                 component.show(false);
@@ -49,6 +49,10 @@ module.exports = function(fastn, component, type, settings, children){
         }
 
         component.contentElement.insertBefore(element, component.contentElement.childNodes[index]);
+    };
+
+    component._isClosable = function(){
+        return component.closable()
     };
 
     var timeout;
@@ -125,4 +129,4 @@ module.exports = function(fastn, component, type, settings, children){
     return component;
 };
 
-module.exports.expectedComponents = ['text', '_generic', 'list', 'templater'];
+module.exports.expectedComponents = ['_generic'];
