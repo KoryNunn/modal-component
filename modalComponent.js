@@ -51,8 +51,12 @@ module.exports = function(fastn, component, type, settings, children){
         component.contentElement.insertBefore(element, component.contentElement.childNodes[index]);
     };
 
+    component._insertModal = function(){
+        crel(document.body, component.modalElement);
+    };
+
     component._isClosable = function(){
-        return component.closable()
+        return component.closable();
     };
 
     var timeout;
@@ -97,8 +101,8 @@ module.exports = function(fastn, component, type, settings, children){
                 component.insert(contentChild);
             }
 
-            if(!component.modalElement.parentNode){
-                crel(document.body, component.modalElement);
+            if(!component.modalElement.parentNode) {
+                component._insertModal();
             }
 
             setModalState('showing');
